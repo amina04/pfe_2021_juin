@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animations/loading_animations.dart';
+import 'package:pfe_2021_juin/screens/list_medi_screen.dart';
 
-class Start extends StatelessWidget {
-  static String id = 'start_screen';
+class Welcome_screen extends StatelessWidget {
+  static String id = 'Welcome_screen';
   @override
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
@@ -39,11 +40,13 @@ class Start extends StatelessWidget {
             flex: 1,
               child: LoadingBouncingGrid.square(
                 borderColor: Colors.cyan,
-                borderSize: 3.0,
-                size: 30.0,
+                borderSize: 2.0,
+
+                size: 50.0,
+
                 backgroundColor: Colors.tealAccent,
                 duration: Duration(milliseconds: 500),
-                controller: ,
+
               ),
 
           ),
