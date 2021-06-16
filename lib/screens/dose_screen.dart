@@ -53,15 +53,7 @@ class _dose_screenState extends State<dose_screen> {
         body:ListView(
           children: [
 
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Le poids',
-//O
 
-                ),),
-            ),
             Padding(padding:const EdgeInsets.all(25.0),
 
 
