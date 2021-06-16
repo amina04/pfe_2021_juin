@@ -120,7 +120,7 @@ class _dose_screenState extends State<dose_screen> {
             shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10)),
             child: Text(
-            "show result",
+            "Afficher résulta",
             style: TextStyle(
             color: Colors.white
             ,  fontSize: size.width/20,
