@@ -25,7 +25,7 @@ class Add_med_screen extends StatelessWidget {
     int id_med;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.tealAccent.shade400,
         title: Text(
             'Ajouter un médicament'
         ),
@@ -389,6 +389,7 @@ class Add_med_screen extends StatelessWidget {
       ),
 
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Colors.tealAccent.shade400,
         style: TabStyle.react,
         items: [
           TabItem(icon: Icons.account_circle),

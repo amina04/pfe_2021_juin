@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:pfe_2021_juin/controller/functions.dart';
 
 import 'package:pfe_2021_juin/model/database.dart';
@@ -27,17 +28,12 @@ class _list_med_screenState extends State<list_med_screen> {
     'Liste des médicaments',
 
   );
-  String clr_inf =remplir_clr_inf(med_clr);
-  String clr_sup =remplir_clr_sup(med_clr);
-  String clr_entre =remplir_clr_entre(med_clr);
-  String bil_inf =remplir_bil_inf(med_bil);
-  String bil_sup =remplir_bil_sup(med_bil);
-  String tgo_inf =remplir_tgo_inf(med_tgo);
-  String tgo_sup =remplir_tgo_sup(med_tgo);
+
   Widget build(BuildContext context) {
     Size size=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.tealAccent.shade400,
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -67,24 +63,54 @@ class _list_med_screenState extends State<list_med_screen> {
                         med_clr = await dbmanager.getClairance(selected_id);
                         med_bil = await dbmanager.getBilirubine(selected_id);
                         med_tgo = await dbmanager.getTgo_tgp(selected_id);
+                        String clr_inf =remplir_clr_inf(med_clr);
+                        String clr_sup =remplir_clr_sup(med_clr);
+                        String clr_entre =remplir_clr_entre(med_clr);
+                        String bil_inf =remplir_bil_inf(med_bil);
+                        String bil_sup =remplir_bil_sup(med_bil);
+                        String tgo_inf =remplir_tgo_inf(med_tgo);
+                        String tgo_sup =remplir_tgo_sup(med_tgo);
                         //=========================
-                        med_search=null;
-                        print('exisit');
+                        print('exisit ${med_clr.inf_30}');
+                     //   med_search=null;
+
                         Alert(
                           context: context,
                           content: Column(
                             children: [
-                              Text('La clairance rénale',textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: size.width/20,
 
-                                ),),
+                              Row(children: <Widget>[
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+
+                                Text('Clairance rénale',textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: size.width/20,
+                                    color: Colors.teal,
+
+                                  ),),
+
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+                              ]),
                               SizedBox(
-                                height: size.height/31,
+                                height: size.height/34,
                               ),
                               Text('Si elle est <= 30 ml/min : ',style: TextStyle(
                                   fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                 color: Colors.grey.shade800,
                               ),),
 
                               Text(' $clr_inf',style: TextStyle(
@@ -95,8 +121,8 @@ class _list_med_screenState extends State<list_med_screen> {
                                 height: size.height/54,
                               ),
                               Text('Si elle est >= 60 ml/min : ',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
                               Text(' $clr_sup',style: TextStyle(
                                 fontSize: size.width/25,
@@ -106,69 +132,109 @@ class _list_med_screenState extends State<list_med_screen> {
                                 height: size.height/54,
                               ),
                               Text('Si elle est entre 30 et 60 ml/min : ',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
                               Text(' $clr_entre',style: TextStyle(
                                 fontSize: size.width/25,
 
                               ),),
-                              SizedBox(
-                                height: size.height/31,
-                              ),
-                              Text('La bilirubine ',textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: size.width/20,
 
-                                ),),
+                              Row(children: <Widget>[
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+
+                                Text('La bilirubine ',textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: size.width/20,
+                                    color: Colors.teal,
+
+                                  ),),
+
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+                              ]),
+
                               SizedBox(
                                 height: size.height/31,
                               ),
                               Text('Si elle est < 60 : ',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
                               Text(' $bil_inf',style: TextStyle(
                                 fontSize: size.width/25,
 
                               ),),
                               SizedBox(
-                                height: size.height/31,
+                                height: size.height/54,
                               ),
                               Text('Si elle est >= 60 :',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
 
                               Text(' $bil_sup',style: TextStyle(
                                 fontSize: size.width/25,
 
                               ),),
-                              SizedBox(
-                                height: size.height/31,
-                              ),
-                              Text('Tgo/Tgp',textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: size.width/20,
 
-                                ),),
+
+                              Row(children: <Widget>[
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+
+                                Text('Tgo/Tgp',textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: size.width/20,
+                                    color: Colors.teal,
+
+                                  ),),
+
+                                Expanded(
+                                  child: new Container(
+                                      margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                                      child: Divider(
+                                        color: Colors.black,
+                                        height: 50,
+                                      )),
+                                ),
+                              ]),
                               SizedBox(
-                                height: size.height/31,
+                                height: size.height/54,
                               ),
                               Text('Si il est < 55 :',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
                               Text(' $tgo_inf',style: TextStyle(
                                 fontSize: size.width/25,
 
                               ),),
                               SizedBox(
-                                height: size.height/31,
+                                height: size.height/54,
                               ),
                               Text('Si il est >= 55 : ',style: TextStyle(
-                                  fontSize: size.width/25,
-                                  fontWeight: FontWeight.bold
+                                fontSize: size.width/25,
+                                color: Colors.grey.shade800,
                               ),),
                               Text(' $tgo_sup',style: TextStyle(
                                 fontSize: size.width/25,
@@ -177,7 +243,7 @@ class _list_med_screenState extends State<list_med_screen> {
 
                             ],
                           ),
-                          title: "Dose à administrer",
+                          title: "${med_search.nom_med} ",
 
                         )
                             .show();
@@ -218,6 +284,7 @@ class _list_med_screenState extends State<list_med_screen> {
         },
       ),
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Colors.tealAccent.shade400,
 
         style: TabStyle.react,
         items: [

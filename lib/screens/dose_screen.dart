@@ -45,15 +45,21 @@ class _dose_screenState extends State<dose_screen> {
     Size size=MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.tealAccent.shade400,
           title: Text(
               'Adoptation posologique'
           ),
         ),
         body:ListView(
           children: [
-
-
+            Padding(
+              padding:const EdgeInsets.only(top: 25.0,left: 25.0 ,right: 25.0),
+              child: Text('choose the medication',style :
+                TextStyle(
+                  fontSize: size.width/23,
+                  color: Colors.grey.shade800,
+                ),),
+            ),
             Padding(padding:const EdgeInsets.all(25.0),
 
 
@@ -108,67 +114,66 @@ class _dose_screenState extends State<dose_screen> {
 
                 ),),
             ),
-            FloatingActionButton(
-              onPressed: (){
+            RaisedButton(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+            color: Colors.amber.shade600,
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10)),
+            child: Text(
+            "show result",
+            style: TextStyle(
+            color: Colors.white
+            ,  fontSize: size.width/20,
+            ),
 
-                String c=resultat_clairance(med_clr,clairance_cntrl.text);
-                String b=resultat_bilirubine(med_bil,bilurbine_cntrl.text);
-                String t=resultat_tgo(med_tgo,tgo_cntrl.text);
+            ),
+            onPressed: ()async{
+              String c=resultat_clairance(med_clr,clairance_cntrl.text);
+              String b=resultat_bilirubine(med_bil,bilurbine_cntrl.text);
+              String t=resultat_tgo(med_tgo,tgo_cntrl.text);
 
-                Alert(
-                  context: context,
-                  content: Column(
-                    children: [
-                      SizedBox(
-                        height: size.height/50,
+              Alert(
+                context: context,
+                content: Column(
+                  children: [
+                    SizedBox(
+                      height: size.height/50,
 
-                      ),
-                      Text('La clairance rénale',style: TextStyle(
-                        fontSize: size.width/22,color: Colors.grey.shade800,
-                      ),),
-                      Text('$c',style: TextStyle(
-                        fontSize: size.width/22,
-                      ),),
-                      SizedBox(
-                        height: size.height/50,
-                      ),
-                      Text('La bilrubine',style: TextStyle(
-                        fontSize: size.width/22,color: Colors.grey.shade800,
-                      ),),
-
-                      Text('$b',style:TextStyle(
-                        fontSize: size.width/22,
-                      ),),
-                      SizedBox(
-                        height: size.height/50,
-                      ),
-                      Text('Tgo/Tgp',style: TextStyle(
-                        fontSize: size.width/22,color: Colors.grey.shade800,
-                      ),),
-
-                      Text('$t',style:TextStyle(
-                        fontSize: size.width/22,
-                      ),),
-                    ],
-                  ),
-                  title: "Dose à administrer",
-
-                )
-                    .show();
+                    ),
+                    Text('Ce médicament est ',style: TextStyle(
+                      fontSize: size.width/22,color: Colors.grey.shade800,
+                    ),),
+                    Text('- $c',style: TextStyle(
+                      fontSize: size.width/22,
+                    ),),
+                    SizedBox(
+                      height: size.height/50,
+                    ),
 
 
-              },
-              child: new Icon(
-                Icons.check,
-                size: 40,
-              ),
-              backgroundColor: Colors.pink,
-              foregroundColor: Colors.white,
-            )
+                    Text('- $b',style:TextStyle(
+                      fontSize: size.width/22,
+                    ),),
+                    SizedBox(
+                      height: size.height/50,
+                    ),
+
+                    Text('- $t',style:TextStyle(
+                      fontSize: size.width/22,
+                    ),),
+                  ],
+                ),
+                title: "Dose à administrer",
+
+              )
+                  .show();
+            }),
+
           ],
 
         ),
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: Colors.tealAccent.shade400,
       style: TabStyle.react,
       items: [
         TabItem(icon: Icons.account_circle),
