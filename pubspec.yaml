@@ -16,8 +16,9 @@ dependencies:
   sqflite: '^1.3.0'
   path_provider: "^2.0.2"
   rflutter_alert: ^2.0.2
-  loading_animations: "^2.1.0"
+  splash_screen_view: ^3.0.0
   convex_bottom_bar: ^3.0.0
+
 
 dev_dependencies:
   flutter_test:
@@ -28,3 +29,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+  fonts:
+    - family: ConcertOne
+      fonts:
+        - asset: font/ConcertOne-Regular.ttf

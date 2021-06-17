@@ -22,7 +22,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
-    home:list_med_screen(),
+    home: Welcome_screen(),
 
     routes: {
       list_med_screen.id: (context) => list_med_screen(),
