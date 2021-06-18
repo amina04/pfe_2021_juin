@@ -71,9 +71,6 @@ class _list_med_screenState extends State<list_med_screen> {
                         String tgo_inf =remplir_tgo_inf(med_tgo);
                         String tgo_sup =remplir_tgo_sup(med_tgo);
                         //=========================
-                        print('exisit ${med_clr.inf_30}');
-                     //   med_search=null;
-
                         Alert(
                           context: context,
                           content: Column(
