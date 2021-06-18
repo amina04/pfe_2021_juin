@@ -82,7 +82,23 @@ class _dose_screenState extends State<dose_screen> {
                               med_clr = await dbmanager.getClairance(med_search.id_med);
                               med_bil = await dbmanager.getBilirubine(med_search.id_med);
                               med_tgo = await dbmanager.getTgo_tgp(med_search.id_med);
-                            });}})),
+                            });} else
+                      {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 100),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            children: <Widget>[
+                              Center(
+                                child: new CircularProgressIndicator(),
+                              ),
+                              SizedBox(height: 50,),
+                              Text('loading ...')
+                            ],
+                          ),
+                        );
+                      }})),
 
             Padding(
               padding: const EdgeInsets.all(25.0),
@@ -120,7 +136,7 @@ class _dose_screenState extends State<dose_screen> {
             shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10)),
             child: Text(
-            "Afficher résulta",
+            "Afficher les résultats",
             style: TextStyle(
             color: Colors.white
             ,  fontSize: size.width/20,
@@ -136,27 +152,107 @@ class _dose_screenState extends State<dose_screen> {
                 context: context,
                 content: Column(
                   children: [
-                    SizedBox(
-                      height: size.height/50,
 
-                    ),
-                    Text('Ce médicament est ',style: TextStyle(
-                      fontSize: size.width/22,color: Colors.grey.shade800,
-                    ),),
+                    Row(children: <Widget>[
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+
+                      Text('pour la clairance rénale',textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: size.width/20,
+                          color: Colors.teal,
+
+                        ),),
+
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+                    ]),
+
+
                     Text('- $c',style: TextStyle(
                       fontSize: size.width/22,
                     ),),
                     SizedBox(
                       height: size.height/50,
                     ),
+                    Row(children: <Widget>[
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+
+                      Text('pour bilurbine',textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: size.width/20,
+                          color: Colors.teal,
+
+                        ),),
+
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+                    ]),
 
 
                     Text('- $b',style:TextStyle(
                       fontSize: size.width/22,
                     ),),
+
                     SizedBox(
                       height: size.height/50,
                     ),
+
+                    Row(children: <Widget>[
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left: 2.0, right: 8.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+
+                      Text('pour tgo/tgp',textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: size.width/20,
+                          color: Colors.teal,
+
+                        ),),
+
+                      Expanded(
+                        child: new Container(
+                            margin: const EdgeInsets.only(left:8.0, right: 2.0),
+                            child: Divider(
+                              color: Colors.black,
+                              height: 50,
+                            )),
+                      ),
+                    ]),
+
+
+
+
 
                     Text('- $t',style:TextStyle(
                       fontSize: size.width/22,
@@ -183,12 +279,15 @@ class _dose_screenState extends State<dose_screen> {
       initialActiveIndex: 0,
         onTap: (int i){
           if(i==0){
+            Navigator.pop(context);
             Navigator.pushNamed(context, dose_screen.id);
           }else{
             if(i==1){
+              Navigator.pop(context);
               Navigator.pushNamed(context, Add_med_screen.id);
             }
             else{
+              Navigator.pop(context);
               Navigator.pushNamed(context,list_med_screen.id);
 
             }

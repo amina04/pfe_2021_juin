@@ -295,13 +295,15 @@ class _list_med_screenState extends State<list_med_screen> {
         initialActiveIndex: 2,
         onTap: (int i){
           if(i==0){
-
+            Navigator.pop(context);
             Navigator.pushNamed(context, dose_screen.id);
           }else{
             if(i==1){
+              Navigator.pop(context);
               Navigator.pushNamed(context, Add_med_screen.id);
             }
             else{
+              Navigator.pop(context);
               Navigator.pushNamed(context,list_med_screen.id);
 
             }
